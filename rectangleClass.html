@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rectangle Class</title>
+</head>
+<body>
+  
+    <canvas id="myCanvas" width="900px" height="600px" style="border:1px solid #d3d3d3;"></canvas>
+
+
+<script>
+
+class Rectangle {
+    constructor(length, width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    perimeter() {
+        return 2 * (this.length + this.width);
+    }
+
+    area() {
+        return this.length * this.width;
+    }
+
+}
+
+function createRect() {
+    let ctx = document.getElementById('myCanvas').getContext('2d');
+    let rect = new Rectangle(80, 160);
+
+    ctx.beginPath();
+    ctx.lineWidth = "6";
+    ctx.strokeStyle = "blue";
+    ctx.rect(200,200,80,160);
+    ctx.stroke();
+    console.log(rect.perimeter());
+    console.log(rect.area());
+}
+
+createRect();
+
+
+
+</script>
+    
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table, tr, td, th {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Add New Product</h1>
+    <label for="">
+        <input id="name" type="text" placeholder="Name of product">
+        <input id="color" type="text" placeholder="Color">
+        <input id="price" type="text" placeholder="Price">
+        <input id="des" type="text" placeholder="Description">
+        <button onclick="addProduct()" >Add</button>
+
+    </label>
+
+    <h1>Display All Product</h1>
+
+    <div id="productTable"></div>
+
+    <script>
+        let products = [
+            ['Samsung', 'Đỏ', '23000đ', 'Tốt'],
+            ['Nokia', 'Xanh', '24000đ', 'Xấu'],
+            ['Xiaomi', 'Vàng', '25000đ', 'Đẹp']
+        ];
+        function display() {
+            let txt = "<table>";
+            txt += `<tr>
+                        <th>Product Name</th>
+                        <th>Color</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th colspan="2">Action</th>
+            
+                    </tr>`;
+
+            for (let i = 0; i < products.length; i++) {
+                txt += "<tr>";
+                for (let j = 0; j < 4; j++) {
+                    txt += `<td>${products[i][j]}</td>`;
+
+                }
+
+                
+                txt += `
+                        <td><button onclick="editProduct(${i})">Edit</button></td>
+                        <td><button onclick="delProduct(${i})" >Del</button></td>
+                       `;
+
+                txt += "</tr>";
+            }
+            
+
+            txt += "</table>";
+            document.getElementById('productTable').innerHTML = txt;
+        }
+
+        display();
+
+        function addProduct(){
+            let name = document.getElementById('name').value;
+            let color = document.getElementById('color').value;
+            let price = document.getElementById('price').value;
+            let des = document.getElementById('des').value;
+
+            products.push([name, color, price, des]);
+            display();
+        }
+
+        function editProduct(index) {
+            let name = prompt("input new name");
+            let color = prompt("input new color");
+            let price = prompt("input new price");
+            let des = prompt("input new description");
+
+            products[index] = [name, color, price, des];
+
+            display();
+        }
+
+        function delProduct(index) {
+            products.splice(index, 1);
+            display();
+        }
+
+
+        
+
+
+    </script>
+
+</body>
+</html>

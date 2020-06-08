@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Built Date Class</title>
+</head>
+<body>
+<script>
+
+
+let MyDate = function(day, month, year) {
+    this.day = day;
+    this.month = month;
+    this.year = year;
+
+    this.getDay = function(day) {
+     
+        return this.day;
+    }
+
+    this.getMonth = function(month) {
+        return this.month;
+    }
+
+    this.getYear = function(year) {
+        return this.year;
+    }
+
+    this.setDay = function(day) {
+        this.day  = day;
+    }
+
+    this.setMonth = function(month) {
+        this.month  = month;
+    }
+
+    this.setYear = function(year) {
+        this.year  = year;
+        return year;
+    }
+}
+
+let date = new MyDate(8,2,1987);
+
+
+let day = date.getDay();
+
+let month = date.getMonth();
+
+let year = date.getYear(); 
+
+console.log(day);
+console.log(month);
+console.log(year);
+
+console.log('*****************');
+date.setDay(20);
+date.setMonth(1);
+date.setYear(2020);
+console.log(date.day);
+console.log(date.month);
+console.log(date.year);
+
+
+
+</script>
+</body>
+</html>

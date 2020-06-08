@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<style>
+    tr,
+    td,
+    th {
+        border: 1px solid black;
+    }
+</style>
+
+<body>
+    <h1>Add New Product</h1>
+    <input type="text" id="name" placeholder="Name of product" />
+    <input type="text" id="color" placeholder="Color" />
+    <input type="text" id="price" placeholder="Price" />
+    <input type="text" id="description" placeholder="Description" />
+    <button onclick="add()">Add</button></br>
+    <h2>Display All Product</h2>
+    <table id="display" style="border: 1px solid black"></table>
+    <script>
+        let products = [
+            ['Samsung', 'Đỏ', '23000đ', 'Tốt'],
+            ['Nokia', 'Xanh', '24000đ', 'Xấu'],
+            ['Xiaomi', 'Vàng', '25000đ', 'Đẹp']
+        ];
+        function display() {
+            let str = "";
+            str += `<tr><th>Product Name</th>
+                    <th>Color</th>
+                    <th>Price</th>
+                    <th>Description</th></tr>`;
+            for (let i = 0; i < products.length; i++) {
+                str += "<tr>";
+                for (let j = 0; j < 4; j++) {
+                    str += `<td>${products[i][j]}</td>`;
+                }
+                str += `<td><button onclick="del(${i})">Delete</button></td>
+                    <td><button onclick="edit(${i})">Edit</button></td></tr>`
+            }
+            document.getElementById('display').innerHTML = str;
+        }
+        display();
+
+        function add() {
+            let name = document.getElementById('name').value;
+            let color = document.getElementById('color').value;
+            let price = document.getElementById('price').value;
+            let description = document.getElementById('description').value;
+            products.push([name, color, price, description]);
+            display();
+        }
+
+        function del(index) {
+            products.splice(index, 1);
+            display();
+        }
+
+        function edit(index) {
+            let sanPham = prompt('Nhập tên sản phẩm mới:');
+            let mauSac = prompt('Nhập màu sắc:');
+            let Gia = prompt('Nhập giá tiền:');
+            let moTa = prompt('Nhập mô tả:');
+            products[index] = [sanPham, mauSac, Gia, moTa];
+            display();
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table, tr, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+
+</head>
+<body>
+    <p><input id = "addProduct" type="text"><button onclick="addProduct()">Add</button></p>
+    <div id="tableProducts"></div>
+
+
+    <script>
+        let Products = ['Nokia', 'Samsung', 'Apple'];
+        console.log(Products[0]);
+        function createTable() {
+            let txt = "<table>";
+            for (let i = 0; i < Products.length; i++) {
+                txt += `<tr>
+                            <td>${Products[i]}</td>
+                            <td onclick="editProduct(${i})" >Edit</td>
+                            <td onclick="delProduct(${i})">Del</td>
+                        </tr>`;
+            }
+            txt += "</table>";
+
+            document.getElementById('tableProducts').innerHTML = txt;
+        }
+
+        createTable();
+
+        function addProduct() {
+            let value = document.getElementById('addProduct').value;
+            Products.push(value);
+            createTable();
+        }
+
+        function editProduct(index) {
+            let newValue = prompt("Input new name");
+            Products[index] = newValue;
+            createTable();
+        }
+
+        function delProduct(index) {
+            Products.splice(index,1);
+            createTable();
+        }
+
+    </script>
+</body>
+</html>

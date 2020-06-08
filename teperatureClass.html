@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Class</title>
+</head>
+<body>
+    
+<script>
+
+class Temperature {
+    constructor(celsius) {
+        this.celsius = celsius;
+    }
+
+    convertF() {
+        if (this.celsius < -273){
+            return alert("Vui lòng nhập nhiệt độ trên -273");
+        }
+        return (9* this.celsius)/5 + 32
+    }
+
+    convertK() {
+        return 273.15 + this.celsius;
+    }
+
+}
+
+let temper = new Temperature(25);
+
+alert(temper.convertF());
+alert(temper.convertK());
+
+
+</script>
+
+</body>
+</html>
